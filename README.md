@@ -21,6 +21,7 @@ Downloads are available in project [Releases](https://github.com/Jahnkeanater/Mi
 * **original-apk** - the original Mi-Walkie-Talkie Android application .apk is here.
 * **original-java** - useful subset of the decompiled Java sources. It is not possible to build an application from theese sources - use it only as a human-readable reference.
 * **app** - primary working folder to build **Mi-Walkie-Talkie-Plus** app mod.
+* **firmware-tools** - `mwt_fw.py`, a tool to unpack, repack and verify Mi Walkie-Talkie 1S firmware files, with documentation of the file format.
     
 ## Building
 Every push builds a signed APK with GitHub Actions (see `.github/workflows/build-apk.yml`); download it from the run's **Artifacts** section (`Mi-Walkie-Talkie-Plus-apk`). Publishing a GitHub Release builds the APK again and attaches it to the release automatically. To keep the same signing key across builds (so new versions install as updates), add repository secrets `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD` and `KEY_ALIAS`; without them each build is signed with a throwaway key.  
