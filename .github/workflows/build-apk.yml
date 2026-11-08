@@ -2,8 +2,14 @@ name: Build APK
 
 on:
   push:
+    branches: ['**']
   pull_request:
   workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -60,3 +66,12 @@ jobs:
         with:
           name: Mi-Walkie-Talkie-Plus-apk
           path: Mi-Walkie-Talkie-Plus.apk
+
+      - name: Attach APK to release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          cp Mi-Walkie-Talkie-Plus.apk "Mi-Walkie-Talkie-Plus-${TAG}.apk"
+          gh release upload "$TAG" "Mi-Walkie-Talkie-Plus-${TAG}.apk" --clobber --repo "$GITHUB_REPOSITORY"
