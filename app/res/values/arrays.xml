@@ -383,7 +383,6 @@
     </string-array>
     <string-array name="main_tab_title">
         <item>Map</item>
-        <item>Discover</item>
         <item>Me</item>
     </string-array>
     <string-array name="main_tab_title_have_net_talk">

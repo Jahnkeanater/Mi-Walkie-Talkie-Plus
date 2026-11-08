@@ -14,6 +14,13 @@ While original Mi Walkie-Talkie application has Chinese and English languages, i
 * **No account / login required (offline mode).**  
 The ifengyu / Xiaomi account servers the original app signs into have been shut down, which made the login screen impossible to get past - and with it, channel programming. Everything the app does with the radio (scanning, connecting, activation, reading and writing channels, custom frequencies) happens locally over Bluetooth LE, so this build skips the login entirely: on first start it stores a local placeholder account and goes straight to connecting your radio. The forced "session expired" logout is removed as well. Online-only features (cloud channel configs, maps download, firmware download from the official server, feedback) still will not work, since those servers are gone.  
 
+* **Firmware flashing works without the update server (Mi 1S).**  
+The "Firmware Update" button used to ask the (now offline) update server first and hang on "checking". With the "Mi-walkie-talkie.firmware" folder present, it now opens the update screen directly, provided the folder holds a file for the radio's hardware revision (named `seal_..._hw<revision>.bin`; the update screen shows the radio as "Hardware version 5.<revision>"). The app asks for storage permission if needed, and if no file matches it says which file name it expected.
+
+* **Mi 1S public channels 1-20 are shown as FRS channels 1-20**, matching a modified 1S firmware (see `firmware-tools/`). The amateur channel list is unchanged.
+
+* **The "Discover" tab is removed**; it only showed online content from the shut-down servers.
+
 ## Download
 Downloads are available in project [Releases](https://github.com/Jahnkeanater/Mi-Walkie-Talkie-Plus/releases) section (offline / no-login builds). Original builds by Darkhorse: [Mi-Walkie-Talkie-by-Darkhorse releases](https://github.com/Mi-Walkie-Talkie-by-Darkhorse/Mi-Walkie-Talkie-Plus/releases).
 

@@ -240,13 +240,7 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    iget-object v0, p0, Lcom/ifengyu/intercom/ui/MainActivity;->q:Ljava/util/ArrayList;
-
-    invoke-static {}, Lcom/ifengyu/intercom/ui/fragment/DiscoveryFragment;->newInstance()Lcom/ifengyu/intercom/ui/fragment/DiscoveryFragment;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    # Mi-Walkie-Talkie-Plus: Discover tab (DiscoveryFragment) removed.
 
     iget-object v0, p0, Lcom/ifengyu/intercom/ui/MainActivity;->q:Ljava/util/ArrayList;
 
@@ -794,7 +788,8 @@
 
     invoke-static {p0}, Lbutterknife/ButterKnife;->bind(Landroid/app/Activity;)Lbutterknife/Unbinder;
 
-    const/4 p1, 0x3
+    # Mi-Walkie-Talkie-Plus: two tabs (Map, Me); the Discover tab is removed.
+    const/4 p1, 0x2
 
     new-array v0, p1, [I
 
@@ -843,14 +838,12 @@
     :array_0
     .array-data 4
         0x7f08015f
-        0x7f08015c
         0x7f080161
     .end array-data
 
     :array_1
     .array-data 4
         0x7f08015e
-        0x7f08015b
         0x7f080160
     .end array-data
 .end method

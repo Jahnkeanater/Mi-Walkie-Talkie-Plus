@@ -1760,6 +1760,17 @@
 .method private y()V
     .locals 4
 
+    # Mi-Walkie-Talkie-Plus: flash from the local firmware folder without the
+    # (offline) online version check.
+    invoke-static {p0}, Lcom/ifengyu/intercom/LocalFirmware;->startSealUpdate(Landroid/app/Activity;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_local_fw_none
+
+    return-void
+
+    :cond_local_fw_none
     invoke-static {p0}, Lcom/ifengyu/intercom/i/c0;->b(Landroid/content/Context;)Z
 
     move-result v0
