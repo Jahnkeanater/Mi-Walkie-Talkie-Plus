@@ -43,5 +43,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '240'
+  versionCode: '241'
   versionName: 2.13.7-offline
