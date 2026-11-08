@@ -110,26 +110,26 @@
         <item>462675000</item>
     </integer-array>
     <integer-array name="seal_remote_channel">
-        <item>430137500</item>
-        <item>430437500</item>
-        <item>431137500</item>
-        <item>431437500</item>
-        <item>432137500</item>
-        <item>432437500</item>
-        <item>433137500</item>
-        <item>433437500</item>
-        <item>434137500</item>
-        <item>434437500</item>
-        <item>435137500</item>
-        <item>435437500</item>
-        <item>436137500</item>
-        <item>436437500</item>
-        <item>437137500</item>
-        <item>437437500</item>
-        <item>438137500</item>
-        <item>438437500</item>
-        <item>439137500</item>
-        <item>439437500</item>
+        <item>162550000</item>
+        <item>162400000</item>
+        <item>162475000</item>
+        <item>162425000</item>
+        <item>162450000</item>
+        <item>162500000</item>
+        <item>162525000</item>
+        <item>446000000</item>
+        <item>445900000</item>
+        <item>445925000</item>
+        <item>445950000</item>
+        <item>445975000</item>
+        <item>446025000</item>
+        <item>446050000</item>
+        <item>446075000</item>
+        <item>446100000</item>
+        <item>446125000</item>
+        <item>446150000</item>
+        <item>446175000</item>
+        <item>446200000</item>
     </integer-array>
     <string-array name="analog_tone">
         <item>@string/common_closed</item>

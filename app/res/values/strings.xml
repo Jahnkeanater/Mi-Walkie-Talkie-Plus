@@ -767,7 +767,7 @@ Please enable [Location] in [Settings]."</string>
     <string name="seal_custom_list_none">"No custom channel, please add
 400.000–470.000"</string>
     <string name="seal_public_ch_range_prompt">FRS channels 1-20 (462.5500 - 467.7125 MHz), press and hold the channel number to edit sub-codes.</string>
-    <string name="seal_remote_ch_range_prompt">430.0000 - 440.0000, press and hold the channel number to edit sub-codes.</string>
+    <string name="seal_remote_ch_range_prompt">1-7: NOAA weather (receive only), 8-20: 70 cm simplex (446.0000 calling), press and hold the channel number to edit sub-codes.</string>
     <string name="search_menu_title">Search</string>
     <string name="selcte_download_map">Select Definition</string>
     <string name="select_all">Select All</string>
