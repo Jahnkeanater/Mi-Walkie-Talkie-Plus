@@ -24,11 +24,56 @@
     return-void
 .end method
 
-# Returns true if handled (update screen opened, or an explanation shown),
+# Returns true if handled (update screen opened, permission requested, or an explanation shown),
 # false to fall back to the original (online) behaviour.
 .method public static startSealUpdate(Landroid/app/Activity;)Z
     .locals 8
 
+    # Reading the firmware folder needs storage permission, which the app
+    # otherwise only requests on unrelated screens. Ask for it here if missing.
+    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v2, 0x17
+
+    if-lt v1, v2, :cond_perm_ok
+
+    const-string v1, "android.permission.READ_EXTERNAL_STORAGE"
+
+    invoke-virtual {p0, v1}, Landroid/app/Activity;->checkSelfPermission(Ljava/lang/String;)I
+
+    move-result v2
+
+    if-eqz v2, :cond_perm_ok
+
+    const/4 v2, 0x2
+
+    new-array v2, v2, [Ljava/lang/String;
+
+    const/4 v3, 0x0
+
+    aput-object v1, v2, v3
+
+    const-string v1, "android.permission.WRITE_EXTERNAL_STORAGE"
+
+    const/4 v3, 0x1
+
+    aput-object v1, v2, v3
+
+    const/16 v3, 0x15
+
+    invoke-virtual {p0, v2, v3}, Landroid/app/Activity;->requestPermissions([Ljava/lang/String;I)V
+
+    const-string v1, "Allow storage access so the app can read the Mi-walkie-talkie.firmware folder, then press Firmware Update again."
+
+    const/4 v2, 0x1
+
+    invoke-static {v1, v2}, Lcom/ifengyu/intercom/i/c0;->a(Ljava/lang/CharSequence;Z)V
+
+    const/4 v1, 0x1
+
+    return v1
+
+    :cond_perm_ok
     new-instance v0, Ljava/io/File;
 
     invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
