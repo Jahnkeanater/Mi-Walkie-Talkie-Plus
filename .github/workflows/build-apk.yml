@@ -1,0 +1,62 @@
+name: Build APK
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      APKTOOL_VERSION: 2.9.3
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Download apktool
+        run: |
+          curl -fsSL -o apktool.jar \
+            "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_${APKTOOL_VERSION}.jar"
+          java -jar apktool.jar --version
+
+      - name: Build unsigned APK
+        run: java -jar apktool.jar build app -o unsigned.apk
+
+      - name: Prepare signing key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "Using signing key from repository secrets"
+            echo "$KEYSTORE_BASE64" | base64 -d > release.jks
+            echo "KS_PASS=$KEYSTORE_PASSWORD" >> "$GITHUB_ENV"
+            echo "KS_ALIAS=$KEY_ALIAS" >> "$GITHUB_ENV"
+          else
+            echo "::warning::No KEYSTORE_BASE64 secret set - signing with a throwaway key. Installing a later build signed with a different key requires uninstalling first."
+            keytool -genkeypair -keystore release.jks -storepass android -keypass android \
+              -alias mwt -keyalg RSA -keysize 2048 -validity 10000 \
+              -dname "CN=Mi-Walkie-Talkie-Plus"
+            echo "KS_PASS=android" >> "$GITHUB_ENV"
+            echo "KS_ALIAS=mwt" >> "$GITHUB_ENV"
+          fi
+
+      - name: Align and sign
+        run: |
+          BT="$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -n1)"
+          echo "Using build-tools: $BT"
+          "$BT/zipalign" -f -p 4 unsigned.apk aligned.apk
+          "$BT/apksigner" sign --ks release.jks --ks-pass "pass:$KS_PASS" \
+            --ks-key-alias "$KS_ALIAS" --out Mi-Walkie-Talkie-Plus.apk aligned.apk
+          "$BT/apksigner" verify --verbose Mi-Walkie-Talkie-Plus.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Mi-Walkie-Talkie-Plus-apk
+          path: Mi-Walkie-Talkie-Plus.apk

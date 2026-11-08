@@ -803,6 +803,21 @@
 
     iput-object p1, p0, Lcom/ifengyu/intercom/ui/SplashActivity;->q:Landroid/os/Bundle;
 
+    # Mi-Walkie-Talkie-Plus: account servers are offline - use a local placeholder
+    # account instead of showing the (now impossible) login screen.
+    invoke-static {p0}, Lcom/ifengyu/intercom/OfflineLogin;->ensure(Landroid/content/Context;)Z
+
+    move-result p1
+
+    if-eqz p1, :cond_offline_ready
+
+    invoke-static {}, Lcom/ifengyu/intercom/MiTalkiApp;->b()Lcom/ifengyu/intercom/MiTalkiApp;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Lcom/ifengyu/intercom/MiTalkiApp;->j()V
+
+    :cond_offline_ready
     const-string p1, "sp_user"
 
     const/4 v0, 0x0

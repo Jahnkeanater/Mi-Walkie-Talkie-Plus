@@ -11,6 +11,9 @@ Now you can use **Mi-Walkie-Talkie-Plus** app mod to flash custom firmware to al
 * **Language mapping rules are changed.**  
 While original Mi Walkie-Talkie application has Chinese and English languages, it follows the rule: all non-English languages --> Chinese. It is not a problem if your phone's language is English or Chinese; but if your primary language is, for example, Spanish or Russian - Mi walkie-talkie application will use Chinese UI, and will update your walkie-talkie firmware to the Chinese version. **"Plus"** mod changes language mapping to the opposite: all non-Chinese phone languages --> English, so with Spanish primary language you will have English UI in application, and English walkie-talkie firmware updates.  
 
+* **No account / login required (offline mode).**  
+The ifengyu / Xiaomi account servers the original app signs into have been shut down, which made the login screen impossible to get past - and with it, channel programming. Everything the app does with the radio (scanning, connecting, activation, reading and writing channels, custom frequencies) happens locally over Bluetooth LE, so this build skips the login entirely: on first start it stores a local placeholder account and goes straight to connecting your radio. The forced "session expired" logout is removed as well. Online-only features (cloud channel configs, maps download, firmware download from the official server, feedback) still will not work, since those servers are gone.  
+
 ## Download
 Downloads are available in project [Releases](https://github.com/Mi-Walkie-Talkie-by-Darkhorse/Mi-Walkie-Talkie-Plus/releases) section.
 
@@ -20,5 +23,8 @@ Downloads are available in project [Releases](https://github.com/Mi-Walkie-Talki
 * **app** - primary working folder to build **Mi-Walkie-Talkie-Plus** app mod.
     
 ## Building
+Every push builds a signed APK with GitHub Actions (see `.github/workflows/build-apk.yml`); download it from the run's **Artifacts** section (`Mi-Walkie-Talkie-Plus-apk`). To keep the same signing key across builds (so new versions install as updates), add repository secrets `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD` and `KEY_ALIAS`; without them each build is signed with a throwaway key.  
+Uninstall the original Mi Walkie-Talkie app (or any previous Plus build signed with a different key) before installing.
+
 Use [Apktool](https://github.com/iBotPeaches/Apktool) v.2.4.0 or newer to build the **Mi-Walkie-Talkie-Plus** app mod.  
 If you are interested in submitting a patch, feel free to send me a pull request here.

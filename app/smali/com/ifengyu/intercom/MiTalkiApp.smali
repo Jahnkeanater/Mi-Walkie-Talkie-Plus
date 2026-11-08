@@ -339,6 +339,8 @@
     .locals 3
 
     :try_start_0
+    invoke-static {p0}, Lcom/ifengyu/intercom/OfflineLogin;->ensure(Landroid/content/Context;)Z
+
     invoke-static {}, Lcom/ifengyu/library/account/a;->d()V
 
     invoke-direct {p0}, Lcom/ifengyu/intercom/MiTalkiApp;->t()V
@@ -875,118 +877,11 @@
 .end method
 
 .method protected d()V
-    .locals 7
+    .locals 0
 
-    invoke-static {}, Lcom/ifengyu/intercom/i/d0;->R()Landroid/content/SharedPreferences;
-
-    move-result-object v0
-
-    const/4 v1, 0x0
-
-    const-string v2, "user_last_login_time"
-
-    invoke-interface {v0, v2, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
-
-    move-result v0
-
-    const-wide/16 v3, 0x3e8
-
-    if-nez v0, :cond_0
-
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v5
-
-    div-long/2addr v5, v3
-
-    long-to-int v0, v5
-
-    invoke-static {}, Lcom/ifengyu/intercom/i/d0;->R()Landroid/content/SharedPreferences;
-
-    move-result-object v5
-
-    invoke-interface {v5}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
-
-    move-result-object v5
-
-    invoke-interface {v5, v2, v0}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
-
-    move-result-object v2
-
-    invoke-interface {v2}, Landroid/content/SharedPreferences$Editor;->apply()V
-
-    :cond_0
-    invoke-static {}, Lcom/ifengyu/intercom/i/d0;->R()Landroid/content/SharedPreferences;
-
-    move-result-object v2
-
-    const-string v5, "user_expires_in"
-
-    invoke-interface {v2, v5, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
-
-    move-result v1
-
-    if-nez v1, :cond_1
-
-    const v1, 0x76a700
-
-    invoke-static {}, Lcom/ifengyu/intercom/i/d0;->R()Landroid/content/SharedPreferences;
-
-    move-result-object v2
-
-    invoke-interface {v2}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
-
-    move-result-object v2
-
-    invoke-interface {v2, v5, v1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
-
-    move-result-object v2
-
-    invoke-interface {v2}, Landroid/content/SharedPreferences$Editor;->apply()V
-
-    :cond_1
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v5
-
-    div-long/2addr v5, v3
-
-    long-to-int v2, v5
-
-    sub-int/2addr v2, v0
-
-    if-lt v2, v1, :cond_2
-
-    invoke-static {}, Lcom/ifengyu/intercom/i/w;->b()Lcom/ifengyu/intercom/i/w;
-
-    move-result-object v0
-
-    new-instance v1, Lcom/ifengyu/intercom/c;
-
-    invoke-direct {v1, p0}, Lcom/ifengyu/intercom/c;-><init>(Lcom/ifengyu/intercom/MiTalkiApp;)V
-
-    invoke-virtual {v0, v1}, Lcom/ifengyu/intercom/i/w;->b(Lcom/qmuiteam/qmui/widget/dialog/QMUIDialogAction$b;)V
-
-    return-void
-
-    :cond_2
-    invoke-static {}, Lcom/ifengyu/intercom/i/d0;->R()Landroid/content/SharedPreferences;
-
-    move-result-object v0
-
-    const-string v1, "userid"
-
-    const-string v2, ""
-
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    new-instance v1, Lcom/ifengyu/intercom/MiTalkiApp$c;
-
-    invoke-direct {v1, p0}, Lcom/ifengyu/intercom/MiTalkiApp$c;-><init>(Lcom/ifengyu/intercom/MiTalkiApp;)V
-
-    invoke-static {v0, v1}, Lcom/ifengyu/intercom/g/a;->c(Ljava/lang/String;Lcom/ifengyu/intercom/g/d/b;)V
+    # Mi-Walkie-Talkie-Plus: login session expiry / remote user-info check removed.
+    # The account servers are offline; the old check forced a logout every 90 days
+    # (or whenever the server replied errno 3), locking users out of the radio.
 
     return-void
 .end method
