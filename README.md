@@ -15,7 +15,7 @@ While original Mi Walkie-Talkie application has Chinese and English languages, i
 The ifengyu / Xiaomi account servers the original app signs into have been shut down, which made the login screen impossible to get past - and with it, channel programming. Everything the app does with the radio (scanning, connecting, activation, reading and writing channels, custom frequencies) happens locally over Bluetooth LE, so this build skips the login entirely: on first start it stores a local placeholder account and goes straight to connecting your radio. The forced "session expired" logout is removed as well. Online-only features (cloud channel configs, maps download, firmware download from the official server, feedback) still will not work, since those servers are gone.  
 
 ## Download
-Downloads are available in project [Releases](https://github.com/Mi-Walkie-Talkie-by-Darkhorse/Mi-Walkie-Talkie-Plus/releases) section.
+Downloads are available in project [Releases](https://github.com/Jahnkeanater/Mi-Walkie-Talkie-Plus/releases) section (offline / no-login builds). Original builds by Darkhorse: [Mi-Walkie-Talkie-by-Darkhorse releases](https://github.com/Mi-Walkie-Talkie-by-Darkhorse/Mi-Walkie-Talkie-Plus/releases).
 
 ## Project structure
 * **original-apk** - the original Mi-Walkie-Talkie Android application .apk is here.
@@ -23,7 +23,7 @@ Downloads are available in project [Releases](https://github.com/Mi-Walkie-Talki
 * **app** - primary working folder to build **Mi-Walkie-Talkie-Plus** app mod.
     
 ## Building
-Every push builds a signed APK with GitHub Actions (see `.github/workflows/build-apk.yml`); download it from the run's **Artifacts** section (`Mi-Walkie-Talkie-Plus-apk`). To keep the same signing key across builds (so new versions install as updates), add repository secrets `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD` and `KEY_ALIAS`; without them each build is signed with a throwaway key.  
+Every push builds a signed APK with GitHub Actions (see `.github/workflows/build-apk.yml`); download it from the run's **Artifacts** section (`Mi-Walkie-Talkie-Plus-apk`). Publishing a GitHub Release builds the APK again and attaches it to the release automatically. To keep the same signing key across builds (so new versions install as updates), add repository secrets `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD` and `KEY_ALIAS`; without them each build is signed with a throwaway key.  
 Uninstall the original Mi Walkie-Talkie app (or any previous Plus build signed with a different key) before installing.
 
 Use [Apktool](https://github.com/iBotPeaches/Apktool) v.2.4.0 or newer to build the **Mi-Walkie-Talkie-Plus** app mod.  
