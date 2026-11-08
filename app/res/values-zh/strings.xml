@@ -714,7 +714,7 @@
     <string name="seal_channel_custom_range">调频范围:430.000 – 440.000MHz</string>
     <string name="seal_custom_list_none">"无自定义频道，请先添加
 430.000–440.000"</string>
-    <string name="seal_public_ch_range_prompt">409.7500 – 409.9875，长按频道序号可编辑频道亚音码</string>
+    <string name="seal_public_ch_range_prompt">FRS 频道 1-20（462.5500 – 467.7125 MHz），长按频道序号可编辑频道亚音码</string>
     <string name="seal_remote_ch_range_prompt">430.0000 – 440.0000，长按频道序号可编辑频道亚音码</string>
     <string name="search_menu_title">搜索</string>
     <string name="selcte_download_map">选择地图清晰度</string>

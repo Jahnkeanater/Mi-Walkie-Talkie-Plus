@@ -81,33 +81,33 @@
         <item>437437500</item>
     </integer-array>
     <integer-array name="seal_public_5_channel">
-        <item>409750000</item>
-        <item>409762500</item>
-        <item>409775000</item>
-        <item>409787500</item>
-        <item>409800000</item>
+        <item>462562500</item>
+        <item>462587500</item>
+        <item>462612500</item>
+        <item>462637500</item>
+        <item>462662500</item>
     </integer-array>
     <integer-array name="seal_public_all_channel">
-        <item>409750000</item>
-        <item>409762500</item>
-        <item>409775000</item>
-        <item>409787500</item>
-        <item>409800000</item>
-        <item>409812500</item>
-        <item>409825000</item>
-        <item>409837500</item>
-        <item>409850000</item>
-        <item>409862500</item>
-        <item>409875000</item>
-        <item>409887500</item>
-        <item>409900000</item>
-        <item>409912500</item>
-        <item>409925000</item>
-        <item>409937500</item>
-        <item>409950000</item>
-        <item>409962500</item>
-        <item>409975000</item>
-        <item>409987500</item>
+        <item>462562500</item>
+        <item>462587500</item>
+        <item>462612500</item>
+        <item>462637500</item>
+        <item>462662500</item>
+        <item>462687500</item>
+        <item>462712500</item>
+        <item>467562500</item>
+        <item>467587500</item>
+        <item>467612500</item>
+        <item>467637500</item>
+        <item>467662500</item>
+        <item>467687500</item>
+        <item>467712500</item>
+        <item>462550000</item>
+        <item>462575000</item>
+        <item>462600000</item>
+        <item>462625000</item>
+        <item>462650000</item>
+        <item>462675000</item>
     </integer-array>
     <integer-array name="seal_remote_channel">
         <item>430137500</item>
