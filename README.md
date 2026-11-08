@@ -17,7 +17,7 @@ The ifengyu / Xiaomi account servers the original app signs into have been shut 
 * **Firmware flashing works without the update server (Mi 1S).**  
 The "Firmware Update" button used to ask the (now offline) update server first and hang on "checking". With the "Mi-walkie-talkie.firmware" folder present, it now opens the update screen directly, provided the folder holds a file for the radio's hardware revision (named `seal_..._hw<revision>.bin`; the update screen shows the radio as "Hardware version 5.<revision>"). The app asks for storage permission if needed, and if no file matches it says which file name it expected.
 
-* **Mi 1S public channels 1-20 are shown as FRS channels 1-20**, matching a modified 1S firmware (see `firmware-tools/`). The amateur channel list is unchanged.
+* **Mi 1S preset channels match a modified 1S firmware** (see `firmware-tools/`): public channels 1-20 are FRS channels 1-20; amateur channels 1-7 are NOAA weather WX1-WX7 (receive only) and 8-20 are 70 cm FM simplex (446.000 calling, 445.900-446.200).
 
 * **The "Discover" tab is removed**; it only showed online content from the shut-down servers.
 
